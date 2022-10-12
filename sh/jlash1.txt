@@ -1,0 +1,40 @@
+  GNU nano 4.8                                                                                     jla1.sh                                                                                                 
+#!/bin/bash
+procesos (){
+        ps -u $1 | more
+        echo "¿ Quieres matar algún proceso? sS/N ?"
+        read z
+        if  [ $z == "s" ] || [ $z == 'S' ]
+        then
+                echo "Dime el proceso: "
+                read numerop
+                kill -9 $numerop
+        fi
+        return 0;
+        }
+ugids (){
+        cat /etc/passwd |grep  $1  | cut -d ":" -f1,3,4
+}
+clear
+while [ true ]
+do
+        echo "Bienvenido:"
+        echo "1.MOSTRAR ID Y GID"
+        echo "2.MOSTRAR Y ELIMINAR PROCESOS"
+        echo "3.SALIR"
+        read x
+        case $x in
+                1)echo "Has selecionado 1: "
+                        ugids $1;;
+                2)echo "Has selecionado 2: "
+                        procesos $1;;
+                3)echo "Has selecionado 3: SALIR"
+                        exit;;
+                *)echo "No has selecionado nada";;
+        esac
+done
+
+
+
+
+

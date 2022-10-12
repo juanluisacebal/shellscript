@@ -1,0 +1,31 @@
+  GNU nano 4.8                                                                                     jla2.sh                                                                                     Modificado  
+#!/bin/bash
+mkdir /home/juanlu/prueba1
+mkdir /home/juanlu/prueba1/prueba1
+cat /etc/passwd > /home/juanlu/prueba3.txt
+cat /etc/passwd > /home/juanlu/prueba1/prueba2/prueba4.txt
+cat /etc/passwd > /home/juanlu/prueba3.txt
+cat /etc/passwd > /home/juanlu/prueba1/prueba2/prueba5.txt
+cat /etc/passwd > /home/juanlu/prueba6.txt
+cat /etc/passwd > /home/juanlu/prueba7.txt
+for i in $*
+do
+        if [ -f $i ]
+        then
+                echo "¿ Quieres borrar el archivo $i ? sS/N ?"
+                read z
+                if  [ $z == "s" ] || [ $z == 'S' ]
+                then
+                        rm $i
+                fi
+        fi
+        if [ -d $i ] 
+        then
+                echo "¿ Quieres borrar el directorio $i con todo su contenido? sS/N ?"
+                read z
+                if  [ $z == "s" ] || [ $z == 'S' ]
+                then
+                        rm -r $i
+                fi
+        fi
+done
